@@ -27,14 +27,29 @@ def matrix_look_around(matrix, pos):
     col = pos[1]
 
     N, E, S, W = None, None, None, None
+    return_dict = {}
 
     if row > 0:
         N = matrix[row-1][col]
+        return_dict['N'] = N
+
     if col > 0:
         W = matrix[row][col-1]
+        return_dict['W'] = W
+
     if row < len(matrix)-1:
         S = matrix[row+1][col]
-    if col < len(matrix[0]-1):
+        return_dict['S'] = S
+
+    if col < len(matrix[0])-1:
         E = matrix[row][col+1]
+        return_dict['E'] = E
 
     return [N, E, S, W]
+
+def create_matrix(width, height, string):
+    matrix = []
+    for i in range(height):
+        matrix.append([string]*width)
+    return matrix
+
